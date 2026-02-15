@@ -1,0 +1,39 @@
+{
+  "main": {
+    "id": "main-workspace",
+    "type": "split",
+    "children": [
+      {
+        "id": "left-pane",
+        "type": "pane",
+        "children": [
+          {
+            "id": "file-explorer",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "right-pane",
+        "type": "pane",
+        "children": [
+          {
+            "id": "markdown-editor",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": null,
+                "mode": "source"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

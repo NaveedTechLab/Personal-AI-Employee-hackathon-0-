@@ -1,0 +1,6 @@
+# Dependencies for Phase 2 - Functional Assistant (Silver Tier)
+watchfiles==0.22.0
+schedule==1.2.2
+playwright==1.40.0
+PyYAML==6.0
+requests==2.31.0

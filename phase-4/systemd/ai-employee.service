@@ -1,0 +1,30 @@
+[Unit]
+Description=Personal AI Employee - Platinum Tier Service
+After=network.target
+
+[Service]
+Type=simple
+User=aiemployee
+Group=aiemployee
+WorkingDirectory=/opt/personal-ai-employee
+Environment=ENVIRONMENT=production
+EnvironmentFile=/opt/personal-ai-employee/.env
+ExecStart=/opt/personal-ai-employee/venv/bin/python -m phase_4.main
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/personal-ai-employee/data /opt/personal-ai-employee/logs /opt/personal-ai-employee/vault
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=16384
+
+[Install]
+WantedBy=multi-user.target

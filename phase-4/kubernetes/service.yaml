@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-employee-service
+  namespace: ai-employee
+  labels:
+    app: personal-ai-employee
+spec:
+  type: ClusterIP
+  selector:
+    app: personal-ai-employee
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  - name: mcp-comm
+    port: 8000
+    targetPort: 8000
+    protocol: TCP
+  - name: mcp-browser
+    port: 8001
+    targetPort: 8001
+    protocol: TCP
+  - name: mcp-sched
+    port: 8002
+    targetPort: 8002
+    protocol: TCP
+  - name: mcp-calendar
+    port: 8003
+    targetPort: 8003
+    protocol: TCP
+  - name: mcp-slack
+    port: 8004
+    targetPort: 8004
+    protocol: TCP
+  - name: mcp-payment
+    port: 8005
+    targetPort: 8005
+    protocol: TCP
+  - name: mcp-a2a
+    port: 8006
+    targetPort: 8006
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-employee-external
+  namespace: ai-employee
+  labels:
+    app: personal-ai-employee
+spec:
+  type: LoadBalancer
+  selector:
+    app: personal-ai-employee
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  - name: https
+    port: 443
+    targetPort: 8080
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: ai-employee
+spec:
+  type: ClusterIP
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379

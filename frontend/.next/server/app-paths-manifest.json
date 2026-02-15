@@ -1,0 +1,8 @@
+{
+  "/whatsapp/page": "app/whatsapp/page.js",
+  "/approvals/page": "app/approvals/page.js",
+  "/vault/page": "app/vault/page.js",
+  "/assistant/page": "app/assistant/page.js",
+  "/page": "app/page.js",
+  "/gmail/page": "app/gmail/page.js"
+}

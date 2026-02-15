@@ -1,0 +1,197 @@
+# ===========================================
+# Personal AI Employee - Docker Compose
+# Platinum Tier: Local Development & Testing
+# ===========================================
+
+version: '3.9'
+
+services:
+  # ===========================================
+  # Main AI Employee Service
+  # ===========================================
+  ai-employee:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: personal-ai-employee
+    restart: unless-stopped
+    ports:
+      - "8080:8080"   # Main API/Health endpoint
+      - "8000:8000"   # Communication MCP
+      - "8001:8001"   # Browser MCP
+      - "8002:8002"   # Scheduling MCP
+      - "8003:8003"   # Calendar MCP
+      - "8004:8004"   # Slack MCP
+      - "8005:8005"   # Browser/Payment MCP
+      - "8006:8006"   # A2A Messaging
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GMAIL_ADDRESS=${GMAIL_ADDRESS}
+      - GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD}
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - REDIS_URL=redis://redis:6379/0
+      - DATABASE_URL=postgresql://aiemployee:aiemployee@postgres:5432/aiemployee
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN:-}
+      - GOOGLE_CALENDAR_CREDENTIALS=${GOOGLE_CALENDAR_CREDENTIALS:-}
+      - A2A_AGENT_ROLE=${A2A_AGENT_ROLE:-local}
+      - A2A_REDIS_URL=redis://redis:6379/1
+    volumes:
+      - vault_data:/app/vault
+      - logs_data:/app/logs
+      - audits_data:/app/audits
+      - ./whatsapp_session:/app/whatsapp_session
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - ai-employee-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+
+  # ===========================================
+  # Redis - Cache & Message Queue
+  # ===========================================
+  redis:
+    image: redis:7-alpine
+    container_name: ai-employee-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-employee-network
+    command: redis-server --appendonly yes
+
+  # ===========================================
+  # PostgreSQL - Persistent Storage
+  # ===========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-employee-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=aiemployee
+      - POSTGRES_PASSWORD=aiemployee
+      - POSTGRES_DB=aiemployee
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./phase-4/scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aiemployee"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-employee-network
+
+  # ===========================================
+  # Prometheus - Metrics Collection
+  # ===========================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ai-employee-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./phase-4/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+    networks:
+      - ai-employee-network
+
+  # ===========================================
+  # Grafana - Dashboards & Visualization
+  # ===========================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: ai-employee-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=aiemployee
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./phase-4/monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./phase-4/monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - prometheus
+    networks:
+      - ai-employee-network
+
+  # ===========================================
+  # Nginx - Reverse Proxy & Load Balancer
+  # ===========================================
+  nginx:
+    image: nginx:alpine
+    container_name: ai-employee-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./phase-4/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./phase-4/nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - ai-employee
+    networks:
+      - ai-employee-network
+
+# ===========================================
+# Networks
+# ===========================================
+networks:
+  ai-employee-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# ===========================================
+# Volumes
+# ===========================================
+volumes:
+  vault_data:
+    driver: local
+  logs_data:
+    driver: local
+  audits_data:
+    driver: local
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local

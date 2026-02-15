@@ -1,0 +1,33 @@
+
+Subject: {{ report_title }} - {{ period }}
+
+Hi Team,
+
+{{ summary }}
+
+Key Accomplishments:
+{% for accomplishment in key_accomplishments %}
+• {{ accomplishment }}
+{% endfor %}
+
+Areas of Concern:
+{% for concern in concerns %}
+• {{ concern }}
+{% endfor %}
+
+Recommendations:
+{% for recommendation in recommendations %}
+• {{ recommendation }}
+{% endfor %}
+
+Next Steps:
+{% for step in next_steps %}
+• {{ step }}
+{% endfor %}
+
+Best regards,
+Business Audit Generator
+
+---
+This report was automatically generated on {{ report_date }}.
+        

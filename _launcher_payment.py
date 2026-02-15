@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""Auto-generated launcher for Browser Payment MCP"""
+import sys
+import os
+from pathlib import Path
+
+# Add the scripts directory to Python path for local imports
+scripts_dir = r"E:\hackathon 0 qwen\Personal-AI-Employee\.claude\skills\browser-payment-mcp\scripts"
+sys.path.insert(0, scripts_dir)
+
+# Also add project root
+sys.path.insert(0, r"E:\hackathon 0 qwen\Personal-AI-Employee")
+
+# Set environment
+os.environ.setdefault("MCP_PORT", "8009")
+os.environ.setdefault("VAULT_DIR", r"demo_vault")
+
+# Change to scripts directory for relative file access
+os.chdir(scripts_dir)
+
+# Import and run
+
+# Direct execution - imports work from sys.path
+exec(open(os.path.join(scripts_dir, "browser_payment_mcp.py"), encoding="utf-8").read())

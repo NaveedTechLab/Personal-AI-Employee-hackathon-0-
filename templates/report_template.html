@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ report_title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+        .header { background-color: #2c3e50; color: white; padding: 20px; border-radius: 5px; }
+        .section { background-color: white; margin: 20px 0; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .summary { font-size: 18px; line-height: 1.6; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .metric-card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .positive { color: #27ae60; }
+        .negative { color: #e74c3c; }
+        .neutral { color: #f39c12; }
+        .chart-container { text-align: center; margin: 20px 0; }
+        .recommendations { background-color: #ecf0f1; padding: 15px; border-left: 4px solid #3498db; }
+        .risks { background-color: #fdf2f2; border-left: 4px solid #e74c3c; padding: 15px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ report_title }}</h1>
+        <p>Generated: {{ report_date }} | Period: {{ period }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <div class="summary">{{ summary|safe }}</div>
+    </div>
+
+    <div class="section">
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>Task Performance</h3>
+                <p><strong>Completion Rate:</strong> {{ "%.2f"|format(task_analysis.completion_rate * 100) }}%</p>
+                <p><strong>Total Tasks:</strong> {{ task_analysis.total_tasks }}</p>
+                <p><strong>Completed:</strong> {{ task_analysis.completed_tasks }}</p>
+                <p><strong>Overdue:</strong> {{ task_analysis.overdue_tasks }}</p>
+            </div>
+
+            <div class="metric-card">
+                <h3>Financial Performance</h3>
+                <p><strong>Total Spending:</strong> ${{ "%.2f"|format(financial_analysis.total_spending) }}</p>
+                <p><strong>Total Income:</strong> ${{ "%.2f"|format(financial_analysis.total_income) }}</p>
+                <p><strong>Net Flow:</strong> ${{ "%.2f"|format(financial_analysis.net_flow) }}</p>
+                <p><strong>Status:</strong> <span class="{% if financial_analysis.net_flow >= 0 %}positive{% else %}negative{% endif %}">{{ financial_analysis.trending|title }}</span></p>
+            </div>
+
+            <div class="metric-card">
+                <h3>Goal Progress</h3>
+                <p><strong>Overall Progress:</strong> {{ "%.2f"|format(goal_progress.overall_progress * 100) }}%</p>
+                <p><strong>Total Goals:</strong> {{ goal_progress.total_goals }}</p>
+                <p><strong>On Track:</strong> {{ goal_progress.goals_on_track }}</p>
+                <p><strong>Behind:</strong> {{ goal_progress.goals_behind }}</p>
+            </div>
+        </div>
+    </div>
+
+    {% if charts %}
+    <div class="section">
+        <h2>Visual Analytics</h2>
+        {% for chart_path in charts %}
+        <div class="chart-container">
+            <img src="{{ chart_path }}" alt="Analytics Chart" style="max-width: 100%;">
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if key_accomplishments %}
+    <div class="section">
+        <h2>Key Accomplishments</h2>
+        <ul>
+            {% for accomplishment in key_accomplishments %}
+            <li>{{ accomplishment }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if concerns %}
+    <div class="section risks">
+        <h2>Areas of Concern</h2>
+        <ul>
+            {% for concern in concerns %}
+            <li>{{ concern }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if recommendations %}
+    <div class="section recommendations">
+        <h2>Recommendations</h2>
+        <ol>
+            {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if next_steps %}
+    <div class="section">
+        <h2>Next Steps</h2>
+        <ol>
+            {% for step in next_steps %}
+            <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+</body>
+</html>
+        

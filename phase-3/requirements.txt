@@ -1,0 +1,8 @@
+fastmcp
+schedule
+obsidian
+pandas
+logging
+yaml
+requests
+playwright
