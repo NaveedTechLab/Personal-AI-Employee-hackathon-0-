@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ai-employee
+  labels:
+    app: personal-ai-employee
+    tier: platinum
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: ai-employee-quota
+  namespace: ai-employee
+spec:
+  hard:
+    requests.cpu: "4"
+    requests.memory: 8Gi
+    limits.cpu: "8"
+    limits.memory: 16Gi
+    pods: "20"
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: ai-employee-limits
+  namespace: ai-employee
+spec:
+  limits:
+  - default:
+      cpu: "500m"
+      memory: "512Mi"
+    defaultRequest:
+      cpu: "100m"
+      memory: "128Mi"
+    type: Container

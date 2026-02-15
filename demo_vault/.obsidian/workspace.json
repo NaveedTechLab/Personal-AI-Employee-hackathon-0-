@@ -1,0 +1,239 @@
+{
+  "main": {
+    "id": "66bff61ab2cd3042",
+    "type": "split",
+    "children": [
+      {
+        "id": "27a29e924f4e385f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f01bb4185960b2ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Setup_Obsidian_Buttons.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Setup_Obsidian_Buttons"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9b996ac594575233",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad3d33024f7804dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd9ef70244bde78f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "77ada53ad0186c45",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6867214a4bb04afc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c7bb9c91cb56a1b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "10bd5e5ab04c7896",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ff0c32f389cd902",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Needs_Action.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Needs_Action"
+            }
+          },
+          {
+            "id": "d33245470a2d7534",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Dashboard.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Dashboard"
+            }
+          },
+          {
+            "id": "44631a0b9dd55ddc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9526f9686202f95d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "89a2b78f92c66687",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Dashboard.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Dashboard"
+            }
+          },
+          {
+            "id": "68c28647ed969201",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "Setup_Obsidian_Buttons.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for Setup_Obsidian_Buttons"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": false
+    }
+  },
+  "active": "f01bb4185960b2ad",
+  "lastOpenFiles": [
+    "In_Progress/local/EMAIL_20260211_042316_Get_the_most_out_of_Grammarly.md",
+    "Pending_Approval/REPLY_EMAIL_20260211_042316_Get_the_most_out_of_Grammarly.md",
+    "Logs/orchestrator_20260211.log",
+    "Plans/PLAN_EMAIL_20260211_042316_Get_the_most_out_of_Grammarly_042319.md",
+    "Logs/gmail_watcher_20260211.log",
+    "Needs_Action/Gmail/EMAIL_20260211_042316_Get_the_most_out_of_Grammarly.md",
+    "Logs/daily_summary_20260210.log",
+    "Company_Handbook.md",
+    "Setup_Obsidian_Buttons.md",
+    "Setup_Obsidian_Buttons.md.tmp.1572.1770728634618",
+    "Social_Media_Control.md",
+    "Social_Media_Control.md.tmp.1572.1770728615940",
+    "Business_Goals.md",
+    "Needs_Action/Gmail/ai_1_Security_alert.md",
+    "Plans/PLAN_EMAIL_20260210_173304_Last_week_you_reached_peak_performance_173309.md",
+    "Pending_Approval/INVOICE_FILE_20260210_010823_test_invoice.txt.md",
+    "Logs/ignored_emails",
+    "In_Progress/local/EMAIL_20260210_173304_Last_week_you_reached_peak_performance.md",
+    "Pending_Approval/REPLY_EMAIL_20260210_173304_Last_week_you_reached_peak_performance.md",
+    "Needs_Action/Gmail/EMAIL_20260210_173304_Last_week_you_reached_peak_performance.md",
+    "In_Progress/local/FILE_20260210_052908_new_test_invoice.txt.md",
+    "Pending_Approval/INVOICE_FILE_20260210_052908_new_test_invoice.txt.md",
+    "Plans/PLAN_FILE_20260210_052908_new_test_invoice.txt_052909.md",
+    "Needs_Action/FILE_20260210_052908_new_test_invoice.txt.md",
+    "Inbox/new_test_invoice.txt",
+    "Untitled.base",
+    "Pending_Approval/REPLY_email_client_inquiry.md",
+    "Pending_Approval/SOCIAL_linkedin_post_draft.md",
+    "Needs_Action/WhatsApp/client_example_com_2026-02-04_0051.md",
+    "Needs_Action/WhatsApp/Manager_2026-02-04_0051.md",
+    "Needs_Action/WhatsApp/Support_2026-02-06_0009.md",
+    "Accounting/Subscription_Audit_2026-02-09.md",
+    "Briefings/2026-02-09_Monday_Briefing.md",
+    "Done/REJECTED_TEST_reject.md",
+    "Logs/approval_flow_20260210.log",
+    "Logs/file_watcher_20260210.log",
+    "Untitled.canvas"
+  ]
+}

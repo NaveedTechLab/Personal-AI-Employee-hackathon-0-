@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-employee-config
+  namespace: ai-employee
+data:
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  API_HOST: "0.0.0.0"
+  API_PORT: "8080"
+
+  # MCP Ports
+  MCP_COMMUNICATION_PORT: "8000"
+  MCP_BROWSER_PORT: "8001"
+  MCP_SCHEDULING_PORT: "8002"
+
+  # Watcher Configuration
+  GMAIL_CHECK_INTERVAL: "60"
+  WHATSAPP_POLL_INTERVAL: "5"
+  FILESYSTEM_POLL_INTERVAL: "2"
+
+  # Health Check Configuration
+  HEALTH_CHECK_INTERVAL: "30"
+  HEALTH_CHECK_TIMEOUT: "10"
+
+  # Feature Flags
+  FEATURE_CROSS_DOMAIN_REASONING: "true"
+  FEATURE_AUTO_RESPONSE: "false"
+  FEATURE_CEO_BRIEFINGS: "true"
+  FEATURE_WEEKLY_AUDITS: "true"
+
+  # New MCP Ports
+  MCP_CALENDAR_PORT: "8003"
+  MCP_SLACK_PORT: "8004"
+  MCP_PAYMENT_PORT: "8005"
+  MCP_A2A_PORT: "8006"
+
+  # A2A Messaging
+  A2A_AGENT_ROLE: "cloud"
+  A2A_HEARTBEAT_INTERVAL: "30"
+  A2A_VAULT_SYNC_METHOD: "git"
+
+  # Finance Watcher
+  FINANCE_POLL_INTERVAL: "300"
+  FINANCE_ALERT_THRESHOLD: "500.00"
+
+  # Payment Controls
+  PAYMENT_MAX_PER_HOUR: "3"
+  PAYMENT_APPROVAL_EXPIRY_HOURS: "24"
+  PAYMENT_HEADLESS: "true"
+
+  # Claude Model
+  CLAUDE_MODEL: "claude-sonnet-4-20250514"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ai-employee-secrets
+  namespace: ai-employee
+type: Opaque
+stringData:
+  # Replace these with actual values or use external secrets management
+  anthropic-api-key: "your-anthropic-api-key"
+  gmail-address: "your-email@gmail.com"
+  gmail-app-password: "your-app-password"
+  database-url: "postgresql://user:pass@postgres:5432/aiemployee"
+  slack-bot-token: "xoxb-your-slack-bot-token"
+  slack-signing-secret: "your-signing-secret"
+  google-calendar-credentials: "{}"
+  a2a-redis-url: "redis://redis:6379/1"

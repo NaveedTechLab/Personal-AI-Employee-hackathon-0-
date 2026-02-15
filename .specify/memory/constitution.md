@@ -1,55 +1,177 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: N/A (initial version) → 1.0.0
+- Modified principles: N/A (new constitution)
+- Added sections: Core Principles, Global Governance Rules, Project Structure, Phase Definitions, Phase Execution Rules, Safety & Control Enforcement, Prohibitions
+- Removed sections: N/A
+- Templates requiring updates: ⚠ pending (.specify/templates/plan-template.md, .specify/templates/spec-template.md, .specify/templates/tasks-template.md)
+- Follow-up TODOs: None
+-->
+# Personal AI Employee (Digital FTE) — Hackathon 0 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Global Governance Rules
+This constitution is created once and only once for the entire project. This constitution is immutable after approval. All future work must comply with this constitution and the hackathon document. Specs are contracts; plans and tasks must not exceed approved specs. Work must proceed one phase at a time. No phase may start before the previous phase is explicitly closed. No steps (spec → plan → tasks → implement) may be skipped or merged. SpecifyPlus internal folders, metadata, and system files must never be modified. All AI functionality must be implemented as Agent Skills, not ad-hoc scripts. No requirements may be invented beyond the hackathon document.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Project Structure (Enforced)
+Root contains three phase directories: /phase-1/, /phase-2/, /phase-3/. Shared resources include Obsidian Vault (local, markdown-based), MCP servers (external processes), and Claude Code runtime. Each phase folder may only contain artifacts relevant to that phase. Shared resources are referenced but not modified by specs unless explicitly allowed.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Phase 1 - Foundation (Bronze Tier)
+Scope includes Obsidian vault structure and core markdown files, single working Watcher, Claude Code read/write integration, and basic folders: Inbox / Needs_Action / Done. Manual triggering and validation are required. Constraints: No MCP-based external actions and no automation without human review.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Phase 2 - Functional Assistant (Silver Tier)
+Scope includes multiple Watchers (e.g., Gmail + WhatsApp), Plan.md generation by Claude, at least one MCP server for action, human-in-the-loop approval workflow, and scheduling via cron or task scheduler. Constraints: Sensitive actions must require approval and external actions limited to defined MCP capabilities.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Phase 3 - Autonomous Employee (Gold Tier)
+Scope includes cross-domain integration (personal + business), multiple MCP servers, weekly business audit and CEO briefing, error handling, recovery, and audit logging, full documentation and lessons learned. Constraints: Strict permission boundaries and comprehensive logging and safety enforcement.
 
-### [PRINCIPLE_6_NAME]
+### Phase Execution Rules
+For each phase: /sp.specify must target only that phase's folder. /sp.plan must be derived strictly from the approved spec. /sp.tasks must be small, verifiable, and non-expansive. /sp.implement must implement only approved tasks. Phase completion requires explicit user confirmation.
 
+### Safety & Control Enforcement
+Human-in-the-loop is mandatory for sensitive actions. Credentials must never be stored in plaintext or vault files. DRY_RUN and DEV_MODE must be supported where applicable. All actions must generate audit logs. Failures must degrade gracefully without silent execution.
 
-[PRINCIPLE__DESCRIPTION]
+### Prohibitions
+No auto-starting next phases, no re-creating or altering this constitution, no direct implementation without tasks, no touching SpecifyPlus internal architecture, no scope expansion beyond the hackathon document.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Global Governance Rules
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+This constitution is created once and only once for the entire project.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+This constitution is immutable after approval.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+All future work must comply with this constitution and the hackathon document.
+
+Specs are contracts; plans and tasks must not exceed approved specs.
+
+Work must proceed one phase at a time.
+
+No phase may start before the previous phase is explicitly closed.
+
+No steps (spec → plan → tasks → implement) may be skipped or merged.
+
+SpecifyPlus internal folders, metadata, and system files must never be modified.
+
+All AI functionality must be implemented as Agent Skills, not ad-hoc scripts.
+
+No requirements may be invented beyond the hackathon document.
+
+## Project Structure (Enforced)
+
+Root:
+
+/phase-1/
+
+/phase-2/
+
+/phase-3/
+
+Shared (referenced but not modified by specs unless explicitly allowed):
+
+Obsidian Vault (local, markdown-based)
+
+MCP servers (external processes)
+
+Claude Code runtime
+
+Each phase folder may only contain artifacts relevant to that phase.
+
+## Phase Definitions
+
+### Phase 1 — Foundation (Bronze Tier)
+Scope:
+
+Obsidian vault structure and core markdown files
+
+Single working Watcher
+
+Claude Code read/write integration
+
+Basic folders: Inbox / Needs_Action / Done
+
+Manual triggering and validation
+Constraints:
+
+No MCP-based external actions
+
+No automation without human review
+
+### Phase 2 — Functional Assistant (Silver Tier)
+Scope:
+
+Multiple Watchers (e.g., Gmail + WhatsApp)
+
+Plan.md generation by Claude
+
+At least one MCP server for action
+
+Human-in-the-loop approval workflow
+
+Scheduling via cron or task scheduler
+Constraints:
+
+Sensitive actions must require approval
+
+External actions limited to defined MCP capabilities
+
+### Phase 3 — Autonomous Employee (Gold Tier)
+Scope:
+
+Cross-domain integration (personal + business)
+
+Multiple MCP servers
+
+Weekly business audit and CEO briefing
+
+Error handling, recovery, and audit logging
+
+Full documentation and lessons learned
+Constraints:
+
+Strict permission boundaries
+
+Comprehensive logging and safety enforcement
+
+## Phase Execution Rules
+For each phase:
+
+/sp.specify must target only that phase's folder.
+
+/sp.plan must be derived strictly from the approved spec.
+
+/sp.tasks must be small, verifiable, and non-expansive.
+
+/sp.implement must implement only approved tasks.
+
+Phase completion requires explicit user confirmation.
+
+## Safety & Control Enforcement
+
+Human-in-the-loop is mandatory for sensitive actions.
+
+Credentials must never be stored in plaintext or vault files.
+
+DRY_RUN and DEV_MODE must be supported where applicable.
+
+All actions must generate audit logs.
+
+Failures must degrade gracefully without silent execution.
+
+## Prohibitions
+
+No auto-starting next phases
+
+No re-creating or altering this constitution
+
+No direct implementation without tasks
+
+No touching SpecifyPlus internal architecture
+
+No scope expansion beyond the hackathon document
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution establishes the foundational rules for the Personal AI Employee (Digital FTE) — Hackathon 0 project. All project activities must comply with these governance rules. Any amendments to this constitution require explicit approval from project leadership and must be documented with clear justification. Regular compliance reviews should be conducted to ensure adherence to these principles throughout the project lifecycle.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-14 | **Last Amended**: 2026-01-14

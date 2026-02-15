@@ -1,0 +1,36 @@
+{
+  "vault_path": "E:/hackathon 0 qwen/Personal-AI-Employee/phase-1/vault",
+  "read_paths": [
+    "Inbox/",
+    "Needs_Action/",
+    "Done/",
+    "Dashboard.md",
+    "Company_Handbook.md"
+  ],
+  "write_paths": [
+    "Inbox/",
+    "Dashboard.md",
+    "Company_Handbook.md"
+  ],
+  "forbidden_paths": [
+    "Needs_Action/",
+    "Done/"
+  ],
+  "interaction_rules": {
+    "read_any_file": true,
+    "write_to_inbox": true,
+    "write_to_dashboard": true,
+    "write_to_handbook": true,
+    "write_to_needs_action": false,
+    "write_to_done": false
+  },
+  "audit_trail": {
+    "enabled": false,
+    "log_location": "logs/claude_interactions.log"
+  },
+  "validation": {
+    "file_type_check": true,
+    "path_validation": true,
+    "permissions_check": true
+  }
+}
