@@ -133,6 +133,7 @@ tmpclaude-*/
 # NODE.JS (For MCP servers)
 # -------------------------------------------
 node_modules/
+.next/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -157,6 +158,11 @@ yarn.lock
 # -------------------------------------------
 reports/
 charts/*.png
+
+# -------------------------------------------
+# AUTO-GENERATED MCP LAUNCHERS
+# -------------------------------------------
+src/launchers/_launcher_*.py
 
 # -------------------------------------------
 # EMAIL DRAFTS (May contain sensitive data)
